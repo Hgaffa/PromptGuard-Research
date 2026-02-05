@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data (large files)
+data/raw/*.csv
+data/raw/*.json
+*.pkl
+*.joblib
+
+# Models
+models/*.bin
+models/*.pt
+models/*.h5
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
