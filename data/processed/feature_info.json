@@ -1,0 +1,26 @@
+{
+  "feature_columns": [
+    "prompt_length",
+    "word_count",
+    "special_char_count",
+    "digit_count",
+    "uppercase_count",
+    "char_entropy",
+    "special_char_ratio",
+    "digit_ratio",
+    "uppercase_ratio",
+    "avg_word_length",
+    "lexical_diversity",
+    "sentence_count",
+    "instruction_keyword_count",
+    "context_keyword_count",
+    "jailbreak_keyword_count",
+    "total_injection_keywords",
+    "url_count",
+    "email_count",
+    "has_base64",
+    "has_hex",
+    "has_code_block"
+  ],
+  "num_features": 21
+}
