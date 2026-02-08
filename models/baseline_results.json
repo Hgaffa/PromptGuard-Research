@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-02-08T15:24:12.596245",
+  "logistic_regression": {
+    "train": {
+      "model_name": "Logistic Regression + TF-IDF",
+      "dataset": "Training",
+      "accuracy": 0.9625154669189897,
+      "precision": 0.9879444060508331,
+      "recall": 0.936458257515103,
+      "f1": 0.9615125924818773,
+      "roc_auc": 0.9893750438949973,
+      "specificity": 0.9885726763228765,
+      "true_negatives": 13582,
+      "false_positives": 157,
+      "false_negatives": 873,
+      "true_positives": 12866,
+      "fpr": 0.011427323677123517,
+      "fnr": 0.06354174248489701
+    },
+    "validation": {
+      "model_name": "Logistic Regression + TF-IDF",
+      "dataset": "Validation",
+      "accuracy": 0.9517887563884156,
+      "precision": 0.9776657060518732,
+      "recall": 0.924701873935264,
+      "f1": 0.9504465067413763,
+      "roc_auc": 0.9839485850439245,
+      "specificity": 0.9788756388415673,
+      "true_negatives": 2873,
+      "false_positives": 62,
+      "false_negatives": 221,
+      "true_positives": 2714,
+      "fpr": 0.02112436115843271,
+      "fnr": 0.07529812606473595
+    }
+  },
+  "random_forest": {
+    "train": {
+      "model_name": "Random Forest + Features",
+      "dataset": "Training",
+      "accuracy": 0.9453744814033045,
+      "precision": 0.9924352164815708,
+      "recall": 0.8975907999126574,
+      "f1": 0.942633288744506,
+      "roc_auc": 0.9900558736132619,
+      "specificity": 0.9931581628939515,
+      "true_negatives": 13645,
+      "false_positives": 94,
+      "false_negatives": 1407,
+      "true_positives": 12332,
+      "fpr": 0.0068418371060484755,
+      "fnr": 0.1024092000873426
+    },
+    "validation": {
+      "model_name": "Random Forest + Features",
+      "dataset": "Validation",
+      "accuracy": 0.9373083475298126,
+      "precision": 0.9845224613061533,
+      "recall": 0.8885860306643952,
+      "f1": 0.9340974212034384,
+      "roc_auc": 0.9653650792729468,
+      "specificity": 0.98603066439523,
+      "true_negatives": 2894,
+      "false_positives": 41,
+      "false_negatives": 327,
+      "true_positives": 2608,
+      "fpr": 0.013969335604770016,
+      "fnr": 0.11141396933560477
+    }
+  }
+}
