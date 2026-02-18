@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-02-17T17:56:22.769241",
+  "distilbert": {
+    "validation": {
+      "model_name": "DistilBERT",
+      "dataset": "Validation",
+      "accuracy": 0.9751277683134583,
+      "precision": 0.9777321000342583,
+      "recall": 0.9724020442930154,
+      "f1": 0.9750597881790228,
+      "roc_auc": 0.9942535747557094,
+      "tn": 2870,
+      "fp": 65,
+      "fn": 81,
+      "tp": 2854,
+      "fpr": 0.022146507666098807,
+      "fnr": 0.02759795570698467,
+      "training_time_minutes": 19.88524555762609
+    },
+    "training_time_minutes": 19.88524555762609,
+    "inference_time_ms": 12.714393138885498
+  },
+  "final_recommendation": {
+    "primary_model": "Logistic Regression + TF-IDF",
+    "best_f1": 0.9504465067413763,
+    "best_auc": 0.9839485850439245,
+    "reasoning": "Best balance of accuracy, speed, and deployability"
+  }
+}
