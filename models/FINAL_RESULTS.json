@@ -1,0 +1,76 @@
+{
+  "project": "PromptGuard",
+  "timestamp": "2026-02-18T14:54:40.554761",
+  "final_model": {
+    "name": "DistilBERT",
+    "type": "transformer",
+    "architecture": "DistilBERT",
+    "parameters": 66000000,
+    "model_size_mb": 250
+  },
+  "performance": {
+    "validation": {
+      "model_name": "DistilBERT",
+      "dataset": "Validation",
+      "accuracy": 0.9751277683134583,
+      "precision": 0.9777321000342583,
+      "recall": 0.9724020442930154,
+      "f1": 0.9750597881790228,
+      "roc_auc": 0.9942535747557094,
+      "tn": 2870,
+      "fp": 65,
+      "fn": 81,
+      "tp": 2854,
+      "fpr": 0.022146507666098807,
+      "fnr": 0.02759795570698467,
+      "training_time_minutes": 19.88524555762609
+    },
+    "test": {
+      "model_name": "DistilBERT",
+      "dataset": "Test",
+      "accuracy": 0.9768943255181787,
+      "precision": 0.9795011957635804,
+      "recall": 0.9741760108732586,
+      "f1": 0.9768313458262351,
+      "roc_auc": 0.99529917682773,
+      "tn": 2883,
+      "fp": 60,
+      "fn": 76,
+      "tp": 2867,
+      "fpr": 0.020387359836901122,
+      "fnr": 0.02582398912674142
+    }
+  },
+  "thresholds": {
+    "maximum_security": {
+      "threshold": 0.1,
+      "fnr": 0.02112436115843271,
+      "fpr": 0.04735945485519591,
+      "f1": 0.966201446107281
+    },
+    "balanced": {
+      "threshold": 0.8500000000000002,
+      "fnr": 0.03339011925042589,
+      "fpr": 0.013628620102214651,
+      "f1": 0.9762560220233999
+    },
+    "user_experience": {
+      "threshold": 0.8500000000000002,
+      "fnr": 0.03339011925042589,
+      "fpr": 0.013628620102214651,
+      "f1": 0.9762560220233999
+    }
+  },
+  "deployment": {
+    "inference_time_ms": 12.714393138885498,
+    "throughput_per_second": 79,
+    "gpu_recommended": true,
+    "model_path": "arkaean/promptguard-distilbert"
+  },
+  "comparison": {
+    "models_tested": 6,
+    "best_baseline": "Logistic Regression + TF-IDF",
+    "baseline_f1": 0.9504465067413763,
+    "improvement_over_baseline": 0.020158299019205295
+  }
+}
