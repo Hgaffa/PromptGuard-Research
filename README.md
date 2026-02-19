@@ -280,7 +280,7 @@ For security applications, **False Negative Rate is critical**:
 
 The final DistilBERT model has been:
 - ✅ Uploaded to HuggingFace Hub: [arkaean/promptguard-distilbert](https://huggingface.co/arkaean/promptguard-distilbert)
-- ✅ Packaged as a Python library: [promptguard](https://github.com/YOUR_USERNAME/promptguard)
+- ✅ Packaged as a Python library: [promptguard](https://github.com/Hgaffa/promptguard)
 - ✅ Optimized for production use
 - ✅ Documented with deployment guides
 
