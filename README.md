@@ -11,7 +11,7 @@ This repository contains the full research pipeline for **PromptGuard**, a promp
 
 ### Why two tracks?
 
-The first track trained a DistilBERT classifier on a fixed 40 K-sample dataset with a random train/test split. It achieved excellent held-out metrics — but that held-out set was drawn from the same sources as the training set. When tested against prompt sources not seen during training, performance dropped substantially.
+The first track trained a DistilBERT classifier on a 35,264-sample class-balanced dataset (downsampled from 52,381 raw samples across 15 sources to achieve 1:1 class balance) with a stratified random train/val/test split. It achieved excellent held-out metrics — but that held-out set was drawn from the same sources as the training set. When tested against prompt sources not seen during training, performance dropped substantially.
 
 The second track addressed this directly. It assembled a 52 K-sample corpus from 15 distinct datasets and evaluated with **Leave-One-Dataset-Out (LODO)** cross-validation: each fold trains on all sources except one and tests on the held-out source. This is the evaluation protocol described in Perez & Ribeiro (2022) and motivated by the "When Benchmarks Lie" problem in security ML. The result is a more honest estimate of how the model behaves on an entirely novel prompt source.
 
@@ -23,17 +23,22 @@ The second track addressed this directly. It assembled a 52 K-sample corpus from
 
 A fine-tuned DistilBERT model (66 M parameters, 3 training epochs) for binary classification of prompts as benign or injection attempts.
 
-### Performance (IID evaluation)
+The model was trained on a **35,264-sample class-balanced dataset** (downsampled from 52,381 raw samples across 15 source datasets to a 1:1 benign/malicious ratio). The 52,381-sample corpus spans direct jailbreaks, indirect injections, agentic attacks, extraction attempts, and benign prompts from sources including WildJailbreak, Kaggle, LLMail-Inject, ToxicChat, XSTest, and several synthetic datasets.
+
+### Performance (IID evaluation — held-out test set, n=5,290)
 
 | Metric | Score |
 |--------|-------|
-| F1-Score | 0.9751 |
-| ROC-AUC | 0.9943 |
-| Recall | 97.24% |
-| Precision | 97.77% |
-| False Negative Rate | 2.76% |
+| F1-Score | 0.9776 |
+| ROC-AUC | 0.9973 |
+| Recall | 97.47% |
+| Precision | 98.06% |
+| False Negative Rate | 2.53% |
+| False Positive Rate | 1.93% |
 
-> **Note:** These metrics are from an IID evaluation — the test set was drawn from the same sources as the training data. Generalisation to novel prompt sources is not characterised here.
+Optimal threshold: **0.40** (tuned on validation set; default 0.5 gives marginally lower F1).
+
+> **Note:** These metrics are from an IID evaluation — the test set was drawn from the same 15 sources as the training data. Generalisation to novel prompt sources is not characterised here. For OOD evaluation, see Pathway 2.
 
 ### Quick start
 
@@ -127,13 +132,17 @@ print(f"Injection probability: {score:.3f}")
 ## Repository Structure
 
 ```
-promptguard-notebooks/          Legacy exploratory pipeline (IID)
-  01_eda.ipynb                  Dataset EDA and class analysis
+promptguard-notebooks/          IID pipeline (Pathway 1 — promptguard-distilbert)
+  01_eda.ipynb                  EDA of 52,381-sample corpus: class distribution,
+                                prompt lengths, source breakdown, pattern analysis
   02_preprocessing_and_feature_engineering.ipynb
-  03_models.ipynb               Logistic regression and random forest baselines
-  04_gradient_boosting.ipynb    XGBoost and LightGBM experiments
-  05_transformer_model.ipynb    DistilBERT fine-tuning
-  06_final_validation.ipynb     Test set evaluation and model selection
+                                Downsampling to 35,264 (1:1 ratio), language detection,
+                                text cleaning, 23 engineered features, stratified splits
+  03_models.ipynb               TF-IDF + Logistic Regression and Random Forest baselines
+  04_gradient_boosting.ipynb    XGBoost and LightGBM with hyperparameter tuning
+  05_transformer_model.ipynb    DistilBERT fine-tuning (3 epochs, ~2 min on GPU)
+  06_final_validation.ipynb     Held-out test evaluation, threshold analysis,
+                                ensemble strategies, HuggingFace Hub upload
 
 promptguard-ensemble-notebooks/ Rigorous LODO pipeline (OOD-honest)
   NB01_Data_Foundation.ipynb    15-dataset corpus assembly (52,381 samples)
