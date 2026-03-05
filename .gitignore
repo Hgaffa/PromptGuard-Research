@@ -15,6 +15,10 @@ venv/
 # Data (large files)
 data/raw/*.csv
 data/raw/*.json
+data/
+
+# Planning artifacts (human-verification files)
+.planning
 *.pkl
 *.joblib
 
